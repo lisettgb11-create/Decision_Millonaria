@@ -1,13 +1,17 @@
 :root {
   --green: #16a34a;
   --red: #dc2626;
-  --blue: #2563eb;
-  --gold: #d97706;
-  --bg: #f5f7fb;
+  --wine: #7a1f3d;
+  --wine-dark: #4f1326;
+  --wine-light: #a13a5c;
+  --silver: #9aa0a8;
+  --silver-dark: #6b7178;
+  --silver-light: #d8dadd;
+  --bg: #f4f3f5;
   --card-bg: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --border: #e5e7eb;
+  --text: #2b1b22;
+  --muted: #6b7178;
+  --border: #e2dfe3;
 }
 
 * {
@@ -22,7 +26,7 @@ body {
 }
 
 .app-header {
-  background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+  background: linear-gradient(135deg, var(--wine-dark), var(--wine));
   color: white;
   text-align: center;
   padding: 40px 20px 30px;
@@ -97,9 +101,9 @@ body {
 
 .summary-item.income .value { color: var(--green); }
 .summary-item.expense .value { color: var(--red); }
-.summary-item.debt .value { color: var(--red); }
-.summary-item.balance .value { color: var(--blue); }
-.summary-item.networth .value { color: var(--gold); }
+.summary-item.debt .value { color: var(--wine-dark); }
+.summary-item.balance .value { color: var(--wine); }
+.summary-item.networth .value { color: var(--silver-dark); }
 
 .inline-form {
   display: flex;
@@ -121,14 +125,14 @@ body {
   padding: 10px 18px;
   border: none;
   border-radius: 8px;
-  background: var(--blue);
+  background: var(--wine);
   color: white;
   font-weight: 600;
   cursor: pointer;
 }
 
 .inline-form button:hover {
-  background: #1d4ed8;
+  background: var(--wine-dark);
 }
 
 .item-list {
@@ -182,7 +186,7 @@ body {
 }
 
 .progress-fill {
-  background: var(--green);
+  background: var(--wine);
   height: 100%;
 }
 
@@ -193,8 +197,8 @@ body {
 
 .btn-secondary {
   background: none;
-  border: 1px solid var(--red);
-  color: var(--red);
+  border: 1px solid var(--silver-dark);
+  color: var(--silver-dark);
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -202,7 +206,7 @@ body {
 }
 
 .btn-secondary:hover {
-  background: var(--red);
+  background: var(--silver-dark);
   color: white;
 }
 
