@@ -26,18 +26,93 @@ body {
 }
 
 .app-header {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(135deg, var(--wine-dark), var(--wine));
   color: white;
   text-align: center;
-  padding: 40px 20px 30px;
+  padding: 56px 20px 40px;
 }
 
-.app-header h1 {
-  margin: 0 0 8px;
-  font-size: 2rem;
+.app-header::before,
+.app-header::after {
+  content: "";
+  position: absolute;
+  top: -30%;
+  width: 90px;
+  height: 180%;
+  background: linear-gradient(
+    100deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.35) 47%,
+    rgba(216, 218, 221, 0.9) 50%,
+    rgba(255, 255, 255, 0.35) 53%,
+    transparent 65%
+  );
+  transform: rotate(12deg);
+  pointer-events: none;
 }
 
-.app-header p {
+.app-header::before { left: -6%; }
+.app-header::after { left: 4%; width: 40px; opacity: 0.7; }
+
+.header-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.brand-name {
+  margin: 0 0 10px;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.brand-name .script,
+.brand-name .serif {
+  background: linear-gradient(180deg, #ffffff 0%, #d8dadd 55%, #9aa0a8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-name .script {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.25em;
+}
+
+.brand-name .serif {
+  font-family: "Playfair Display", serif;
+}
+
+.subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  color: var(--silver-light);
+}
+
+.subtitle .line {
+  width: 50px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.header-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin-bottom: 18px;
+  font-size: 0.9rem;
+  color: #f1eef0;
+}
+
+.header-cta {
   margin: 0;
   opacity: 0.9;
 }
