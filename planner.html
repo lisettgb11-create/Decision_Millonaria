@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finanzas con Lisett García 2026 - Planner Financiero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        box-sizing: border-box;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --color-background: #FBF6F8;
+        --color-surface: #FFFFFF;
+        --color-text: #2D1B2E;
+        --color-accent: #7A1F3D;
+        --color-gold: #9AA0A8;
+    }
+
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #FBF6F8 0%, #F5F1F2 50%, #F7EEF1 100%);
+        color: var(--color-text);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .planner-container {
+        width: 100%;
+        min-height: 100%;
+        padding: 60px 24px;
+    }
+
+    .page {
+        max-width: 1000px;
+        margin: 0 auto 80px;
+        background: var(--color-surface);
+        border-radius: 24px;
+        padding: 80px 70px;
+        box-shadow: 0 20px 60px rgba(122, 31, 61, 0.15), 0 10px 30px rgba(122, 31, 61, 0.08);
+        position: relative;
+    }
+
+    /* PORTADA */
+    .cover-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 700px;
+        background: linear-gradient(135deg, #4F1326 0%, #7A1F3D 50%, #A13A5C 100%);
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cover-page::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+
+    .cover-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .cover-badge {
+        display: inline-block;
+        padding: 12px 28px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .cover-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 72px;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -1px;
+        color: white;
+    }
+
+    .cover-subtitle {
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0 auto;
+        opacity: 0.95;
+    }
+
+    .cover-tagline {
+        margin-top: 60px;
+        font-size: 18px;
+        font-style: italic;
+        font-weight: 300;
+        opacity: 0.9;
+        max-width: 500px;
+    }
+
+    /* DECORACIONES */
+    .decorative-line {
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+        margin: 30px auto;
+    }
+
+    /* TÍTULOS */
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 36px;
+        font-weight: 600;
+        color: var(--color-accent);
+        margin: 50px 0 24px;
+        line-height: 1.3;
+    }
+
+    h3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--color-text);
+        margin: 35px 0 18px;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #6B5B6E;
+        margin-bottom: 18px;
+    }
+
+    .intro-text {
+        font-size: 18px;
+        line-height: 1.9;
+        color: #4A3A4D;
+        margin-bottom: 28px;
+    }
+
+    /* CAJAS DESTACADAS */
+    .highlight-box {
+        background: linear-gradient(135deg, #F5E6EA 0%, #F3EEF0 100%);
+        border-left: 5px solid var(--color-accent);
+        padding: 32px 36px;
+        margin: 35px 0;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(122, 31, 61, 0.12);
+    }
+
+    .highlight-box p {
+        margin-bottom: 12px;
+    }
+
+    .highlight-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    .intention-box {
+        background: linear-gradient(135deg, #FBF6F8 0%, #F5F1F2 100%);
+        padding: 40px;
+        border-radius: 20px;
+        margin: 40px 0;
+        box-shadow: 0 10px 30px rgba(122, 31, 61, 0.08);
+    }
+
+    /* LISTAS */
+    ul, ol {
+        margin: 24px 0 24px 30px;
+        color: #6B5B6E;
+        line-height: 1.9;
+    }
+
+    li {
+        margin-bottom: 14px;
+        font-size: 16px;
+    }
+
+    li strong {
+        color: var(--color-text);
+        font-weight: 600;
+    }
+
+    /* TABLAS */
+    .finance-table {
+        width: 100%;
+        margin: 35px 0;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(122, 31, 61, 0.08);
+    }
+
+    .finance-table th {
+        background: linear-gradient(135deg, #7A1F3D 0%, #A13A5C 100%);
+        color: white;
+        padding: 20px 18px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+    }
+
+    .finance-table td {
+        padding: 18px;
+        border-bottom: 1px solid #ECDFE2;
+        font-size: 15px;
+        color: #6B5B6E;
+    }
+
+    .finance-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .finance-table tr:hover {
+        background: #FBF6F8;
+    }
+
+    .finance-table .total-row {
+        background: linear-gradient(135deg, #F5E6EA 0%, #F3EEF0 100%);
+        font-weight: 600;
+        color: var(--color-text);
+    }
+
+    .finance-table .total-row:hover {
+        background: linear-gradient(135deg, #F5E6EA 0%, #F3EEF0 100%);
+    }
+
+    /* TARJETAS */
+    .card {
+        background: white;
+        border: 2px solid #ECDFE2;
+        border-radius: 20px;
+        padding: 36px;
+        margin: 28px 0;
+        transition: all 0.4s ease;
+        box-shadow: 0 6px 20px rgba(122, 31, 61, 0.08);
+    }
+
+    .card:hover {
+        box-shadow: 0 20px 50px rgba(122, 31, 61, 0.2);
+        transform: translateY(-6px);
+        border-color: var(--color-accent);
+    }
+
+    .card-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: 10px;
+    }
+
+    .card-subtitle {
+        font-size: 14px;
+        color: var(--color-accent);
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 600;
+    }
+
+    /* ÁREAS DE ESCRITURA */
+    .writing-space {
+        background: white;
+        border: 2px dashed #D9C4CC;
+        border-radius: 12px;
+        padding: 28px;
+        margin: 24px 0;
+        min-height: 150px;
+        transition: all 0.3s ease;
+    }
+
+    .writing-space:hover {
+        border-color: var(--color-accent);
+        background: #FBF6F8;
+    }
+
+    .writing-lines {
+        background-image: repeating-linear-gradient(
+            transparent,
+            transparent 44px,
+            #ECDFE2 44px,
+            #ECDFE2 45px
+        );
+        min-height: 250px;
+        padding: 28px;
+        margin: 24px 0;
+        border-radius: 8px;
+    }
+
+    /* SECCIONES ESPECIALES */
+    .step-container {
+        display: flex;
+        align-items: flex-start;
+        margin: 28px 0;
+        padding: 28px;
+        background: linear-gradient(135deg, #FFFFFF 0%, #FBF6F8 100%);
+        border-radius: 16px;
+        border: 2px solid #ECDFE2;
+        transition: all 0.3s ease;
+    }
+
+    .step-container:hover {
+        transform: translateX(8px);
+        box-shadow: 0 10px 30px rgba(122, 31, 61, 0.15);
+        border-color: var(--color-accent);
+    }
+
+    .step-number {
+        background: linear-gradient(135deg, #7A1F3D 0%, #A13A5C 100%);
+        color: white;
+        min-width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 18px;
+        flex-shrink: 0;
+        margin-right: 24px;
+        box-shadow: 0 6px 20px rgba(122, 31, 61, 0.3);
+    }
+
+    .step-content h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .step-content p {
+        margin-bottom: 0;
+    }
+
+    /* AFIRMACIONES */
+    .affirmation {
+        font-family: 'Playfair Display', serif;
+        font-size: 28px;
+        font-style: italic;
+        text-align: center;
+        color: var(--color-accent);
+        padding: 50px 30px;
+        line-height: 1.6;
+        position: relative;
+    }
+
+    .affirmation::before,
+    .affirmation::after {
+        content: '"';
+        font-size: 60px;
+        color: var(--color-gold);
+        opacity: 0.4;
+        position: absolute;
+    }
+
+    .affirmation::before {
+        top: 10px;
+        left: 20px;
+    }
+
+    .affirmation::after {
+        bottom: 10px;
+        right: 20px;
+    }
+
+    /* NÚMEROS DE PÁGINA */
+    .page-number {
+        position: absolute;
+        bottom: 30px;
+        right: 40px;
+        font-size: 14px;
+        color: #C9B7C7;
+        font-weight: 300;
+    }
+
+    /* BADGES */
+    .badge {
+        display: inline-block;
+        padding: 8px 16px;
+        background: linear-gradient(135deg, #7A1F3D 0%, #A13A5C 100%);
+        color: white;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 8px 4px;
+    }
+
+    .badge-gold {
+        background: linear-gradient(135deg, #9AA0A8 0%, #D8DADD 100%);
+        color: #2D1B2E;
+    }
+
+    /* SECCIÓN DE METAS */
+    .goal-card {
+        background: linear-gradient(135deg, #F5E6EA 0%, #ECD6DD 100%);
+        padding: 32px;
+        border-radius: 20px;
+        margin: 24px 0;
+        border: 2px solid var(--color-accent);
+        box-shadow: 0 8px 24px rgba(122, 31, 61, 0.15);
+    }
+
+    /* ANÁLISIS MENSUAL */
+    .analysis-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin: 35px 0;
+    }
+
+    .analysis-item {
+        background: white;
+        padding: 28px;
+        border-radius: 16px;
+        border: 2px solid #ECDFE2;
+        transition: all 0.3s ease;
+    }
+
+    .analysis-item:hover {
+        border-color: var(--color-accent);
+        box-shadow: 0 10px 30px rgba(122, 31, 61, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .analysis-item h4 {
+        color: var(--color-accent);
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .page {
+            padding: 50px 30px;
+            margin-bottom: 50px;
+        }
+
+        .cover-title {
+            font-size: 48px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        .analysis-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .finance-table {
+            font-size: 14px;
+        }
+
+        .finance-table th,
+        .finance-table td {
+            padding: 12px 10px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="planner-container">
+
+<!-- PORTADA -->
+<div class="page cover-page">
+ <div class="cover-content">
+  <div class="cover-badge">Planner Financiero 2026 · Lisett García</div>
+  <h1 class="cover-title">Finanzas con<br>Lisett García</h1>
+  <p class="cover-subtitle">Planner financiero mensual con visión anual, metas reales y acompañamiento emocional</p>
+  <p class="cover-tagline">"Cuando tu dinero tiene intención, tus decisiones se alinean"</p>
+ </div>
+</div>
+
+<!-- BIENVENIDA -->
+<div class="page">
+ <h1>Bienvenida/o a Finanzas con Lisett García</h1>
+ <div class="decorative-line"></div>
+ <p class="intro-text">Este no es un planner para personas perfectas. Es para personas <strong>reales</strong> con ingresos y gastos reales, con días buenos y días difíciles, con sueños grandes y presupuestos ajustados.</p>
+ <p class="intro-text">Aquí encontrarás <strong>claridad</strong>, <strong>estructura flexible</strong> y <strong>acompañamiento</strong> para avanzar sin culpa hacia tus metas financieras.</p>
+ <div class="highlight-box">
+  <h3>Cómo usar este planner</h3>
+  <p><strong>1. Define tu visión y metas del año</strong> — ¿Qué quieres lograr financiera y emocionalmente?</p>
+  <p><strong>2. Convierte tu visión en proyectos mensuales</strong> — Divide grandes metas en pasos pequeños</p>
+  <p><strong>3. Organiza ingresos y gastos semana a semana</strong> — Claridad real de tu flujo de dinero</p>
+  <p><strong>4. Analiza, ajusta y continúa</strong> — Aprende de cada mes sin juzgarte</p>
+ </div>
+ <h2>Mi intención para este año</h2>
+ <div class="intention-box">
+  <p style="font-size: 17px; margin-bottom: 24px;"><strong>Este año quiero relacionarme con mi dinero desde:</strong></p>
+  <div class="writing-space" style="min-height: 100px;"></div>
+  <p style="font-size: 17px; margin-bottom: 24px; margin-top: 32px;"><strong>Mi intención al usar este planner es:</strong></p>
+  <div class="writing-space" style="min-height: 100px;"></div>
+ </div>
+ <div class="affirmation">"El progreso vale más que la perfección"</div>
+ <div class="affirmation">"Pequeños ajustes crean grandes cambios"</div>
+ <div class="page-number">01</div>
+</div>
+
+<!-- VISIÓN ANUAL -->
+<div class="page">
+ <h1>Mi Visión Anual 2026</h1>
+ <div class="decorative-line"></div>
+ <p class="intro-text">Antes de planificar mes a mes, necesitas claridad sobre tu destino. ¿Qué quieres lograr este año? ¿Cómo quieres sentirte con tu dinero?</p>
+ <div class="goal-card">
+  <h3 style="margin-top: 0;">Meta financiera principal del año</h3>
+  <p style="font-size: 14px; color: #8B7089; margin-bottom: 16px;">Ejemplo: Ahorrar $5,000 para fondo de emergencia | Liquidar tarjeta de crédito | Viajar en verano</p>
+  <div class="writing-space" style="min-height: 120px;"></div>
+ </div>
+ <h2>Resultados que quiero alcanzar</h2>
+ <div class="step-container">
+  <div class="step-number">💰</div>
+  <div class="step-content">
+   <h3>Resultado financiero</h3>
+   <p style="margin-bottom: 12px;">¿Qué quieres lograr con tus finanzas?</p>
+   <div class="writing-space" style="min-height: 100px;"></div>
+  </div>
+ </div>
+ <div class="step-container">
+  <div class="step-number">❤️</div>
+  <div class="step-content">
+   <h3>Resultado personal/emocional</h3>
+   <p style="margin-bottom: 12px;">¿Cómo quieres sentirte al finalizar el año?</p>
+   <div class="writing-space" style="min-height: 100px;"></div>
+  </div>
+ </div>
+ <div class="step-container">
+  <div class="step-number">✨</div>
+  <div class="step-content">
+   <h3>Cómo quiero relacionarme con mi dinero</h3>
+   <p style="margin-bottom: 12px;">Ejemplo: Con conciencia | Sin culpa | Con intención | Con abundancia | Con calma</p>
+   <div class="writing-space" style="min-height: 100px;"></div>
+  </div>
+ </div>
+ <div class="highlight-box">
+  <p><strong>💡 Recuerda:</strong> Tus metas pueden cambiar durante el año. Este planner es flexible y se adapta a tu realidad.</p>
+ </div>
+ <div class="page-number">02</div>
+</div>
+
+<!-- PROYECTOS MENSUALES -->
+<div class="page">
+ <h1>Proyectos por Mes</h1>
+ <div class="decorative-line"></div>
+ <p class="intro-text">Tu visión anual se divide en 12 proyectos mensuales. Cada mes tiene un enfoque específico que te acerca a tu meta principal.</p>
+ <h2>Formato para cada mes</h2>
+ <table class="finance-table">
+  <thead>
+   <tr><th style="width: 20%;">Mes</th><th style="width: 40%;">Proyecto financiero</th><th style="width: 40%;">Meta emocional</th></tr>
+  </thead>
+  <tbody>
+   <tr><td><strong>Enero</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Febrero</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Marzo</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Abril</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Mayo</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Junio</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+  </tbody>
+ </table>
+ <div class="page-number">03</div>
+</div>
+
+<!-- PROYECTOS MENSUALES PARTE 2 -->
+<div class="page">
+ <h1>Proyectos por Mes (continuación)</h1>
+ <div class="decorative-line"></div>
+ <table class="finance-table">
+  <thead>
+   <tr><th style="width: 20%;">Mes</th><th style="width: 40%;">Proyecto financiero</th><th style="width: 40%;">Meta emocional</th></tr>
+  </thead>
+  <tbody>
+   <tr><td><strong>Julio</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Agosto</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Septiembre</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Octubre</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Noviembre</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Diciembre</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+  </tbody>
+ </table>
+ <div class="highlight-box">
+  <p><strong>💡 Ejemplo de proyectos mensuales:</strong></p>
+  <p><strong>Enero:</strong> Organizar gastos y crear presupuesto base | Sentirme en control</p>
+  <p><strong>Febrero:</strong> Ahorrar primer $500 del fondo de emergencia | Sentir seguridad</p>
+  <p><strong>Marzo:</strong> Revisar suscripciones innecesarias | Sentir claridad</p>
+ </div>
+ <div class="page-number">04</div>
+</div>
+
+<!-- PLANNER MENSUAL - SEMANA 1 -->
+<div class="page">
+ <h1>Planner Mensual: [MES]</h1>
+ <div class="decorative-line"></div>
+ <div class="goal-card">
+  <h3 style="margin-top: 0;">Meta del mes</h3>
+  <div class="writing-space" style="min-height: 80px;"></div>
+ </div>
+ <div class="goal-card" style="background: linear-gradient(135deg, #F3EEF0 0%, #E6E2E4 100%); border-color: var(--color-gold);">
+  <h3 style="margin-top: 0; color: #4F1326;">Prioridad principal del mes</h3>
+  <div class="writing-space" style="min-height: 80px;"></div>
+ </div>
+ <h2>Semana 1</h2>
+ <p style="color: #8B7089; font-size: 14px; margin-bottom: 24px;">Del ___ al ___ de [mes]</p>
+ <table class="finance-table">
+  <thead><tr><th colspan="2">Ingresos de la semana</th></tr></thead>
+  <tbody>
+   <tr><td style="width: 60%;"><strong>Fuente de ingreso 1:</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Fuente de ingreso 2:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Tip / Cash extra:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Otros ingresos:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr class="total-row"><td><strong>TOTAL INGRESOS SEMANA 1</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <table class="finance-table" style="margin-top: 30px;">
+  <thead><tr><th colspan="2">Gastos de la semana</th></tr></thead>
+  <tbody>
+   <tr><td style="width: 60%;"><strong>Vivienda (renta/hipoteca):</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Teléfono/Internet:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Tarjetas de crédito:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Seguros:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Servicios (luz, agua, gas):</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Alimentos y despensa:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Transporte/Gasolina:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Otros gastos:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr class="total-row"><td><strong>TOTAL GASTOS SEMANA 1</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <table class="finance-table" style="margin-top: 30px;">
+  <tbody>
+   <tr style="background: linear-gradient(135deg, #D4F4DD 0%, #B5EAC3 100%);"><td style="width: 60%;"><strong>Ahorro teórico (Ingresos - Gastos):</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+   <tr style="background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);"><td><strong>Ahorro real (lo que realmente ahorré):</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <h3 style="margin-top: 30px;">Nota personal de la semana</h3>
+ <div class="writing-space" style="min-height: 100px;"></div>
+ <div class="page-number">05</div>
+</div>
+
+<!-- PLANNER MENSUAL - SEMANAS 2-4 -->
+<div class="page">
+ <h1>Semana 2</h1>
+ <p style="color: #8B7089; font-size: 14px; margin-bottom: 24px;">Del ___ al ___ de [mes]</p>
+ <table class="finance-table">
+  <thead><tr><th colspan="2">Ingresos de la semana</th></tr></thead>
+  <tbody>
+   <tr><td style="width: 60%;"><strong>Fuente de ingreso 1:</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Fuente de ingreso 2:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Tip / Cash extra:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Otros ingresos:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr class="total-row"><td><strong>TOTAL INGRESOS SEMANA 2</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <table class="finance-table" style="margin-top: 30px;">
+  <thead><tr><th colspan="2">Gastos de la semana</th></tr></thead>
+  <tbody>
+   <tr><td style="width: 60%;"><strong>Gastos fijos:</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Alimentos y despensa:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Transporte/Gasolina:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Salidas/Entretenimiento:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Otros gastos:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr class="total-row"><td><strong>TOTAL GASTOS SEMANA 2</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <table class="finance-table" style="margin-top: 30px;">
+  <tbody>
+   <tr style="background: linear-gradient(135deg, #D4F4DD 0%, #B5EAC3 100%);"><td style="width: 60%;"><strong>Ahorro teórico:</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+   <tr style="background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);"><td><strong>Ahorro real:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <h3 style="margin-top: 30px;">Nota personal de la semana</h3>
+ <div class="writing-space" style="min-height: 80px;"></div>
+ <div class="page-number">06</div>
+</div>
+
+<!-- SEMANA 3 -->
+<div class="page">
+ <h1>Semana 3</h1>
+ <p style="color: #8B7089; font-size: 14px; margin-bottom: 24px;">Del ___ al ___ de [mes]</p>
+ <table class="finance-table">
+  <thead><tr><th colspan="2">Ingresos de la semana</th></tr></thead>
+  <tbody>
+   <tr><td style="width: 60%;"><strong>Fuente de ingreso 1:</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Fuente de ingreso 2:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Tip / Cash extra:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Otros ingresos:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr class="total-row"><td><strong>TOTAL INGRESOS SEMANA 3</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <table class="finance-table" style="margin-top: 30px;">
+  <thead><tr><th colspan="2">Gastos de la semana</th></tr></thead>
+  <tbody>
+   <tr><td style="width: 60%;"><strong>Gastos fijos:</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Alimentos y despensa:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Transporte/Gasolina:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Salidas/Entretenimiento:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Otros gastos:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr class="total-row"><td><strong>TOTAL GASTOS SEMANA 3</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <table class="finance-table" style="margin-top: 30px;">
+  <tbody>
+   <tr style="background: linear-gradient(135deg, #D4F4DD 0%, #B5EAC3 100%);"><td style="width: 60%;"><strong>Ahorro teórico:</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+   <tr style="background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);"><td><strong>Ahorro real:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <h3 style="margin-top: 30px;">Nota personal de la semana</h3>
+ <div class="writing-space" style="min-height: 80px;"></div>
+ <div class="page-number">07</div>
+</div>
+
+<!-- SEMANA 4 -->
+<div class="page">
+ <h1>Semana 4</h1>
+ <p style="color: #8B7089; font-size: 14px; margin-bottom: 24px;">Del ___ al ___ de [mes]</p>
+ <table class="finance-table">
+  <thead><tr><th colspan="2">Ingresos de la semana</th></tr></thead>
+  <tbody>
+   <tr><td style="width: 60%;"><strong>Fuente de ingreso 1:</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Fuente de ingreso 2:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Tip / Cash extra:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Otros ingresos:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr class="total-row"><td><strong>TOTAL INGRESOS SEMANA 4</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <table class="finance-table" style="margin-top: 30px;">
+  <thead><tr><th colspan="2">Gastos de la semana</th></tr></thead>
+  <tbody>
+   <tr><td style="width: 60%;"><strong>Gastos fijos:</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Alimentos y despensa:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Transporte/Gasolina:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Salidas/Entretenimiento:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Otros gastos:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr class="total-row"><td><strong>TOTAL GASTOS SEMANA 4</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <table class="finance-table" style="margin-top: 30px;">
+  <tbody>
+   <tr style="background: linear-gradient(135deg, #D4F4DD 0%, #B5EAC3 100%);"><td style="width: 60%;"><strong>Ahorro teórico:</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+   <tr style="background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);"><td><strong>Ahorro real:</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <h3 style="margin-top: 30px;">Nota personal de la semana</h3>
+ <div class="writing-space" style="min-height: 80px;"></div>
+ <div class="page-number">08</div>
+</div>
+
+<!-- RESUMEN MENSUAL -->
+<div class="page">
+ <h1>Resumen del Mes</h1>
+ <div class="decorative-line"></div>
+ <table class="finance-table">
+  <thead><tr><th style="width: 50%;">Concepto</th><th style="width: 50%;">Monto</th></tr></thead>
+  <tbody>
+   <tr><td><strong>Total ingresos Semana 1</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Total ingresos Semana 2</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Total ingresos Semana 3</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Total ingresos Semana 4</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr class="total-row" style="background: linear-gradient(135deg, #D4F4DD 0%, #B5EAC3 100%);"><td><strong>TOTAL INGRESOS DEL MES</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <table class="finance-table" style="margin-top: 30px;">
+  <thead><tr><th style="width: 50%;">Concepto</th><th style="width: 50%;">Monto</th></tr></thead>
+  <tbody>
+   <tr><td><strong>Total gastos Semana 1</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Total gastos Semana 2</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Total gastos Semana 3</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Total gastos Semana 4</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0;"></div></td></tr>
+   <tr class="total-row" style="background: linear-gradient(135deg, #FFE4E1 0%, #FFC9C9 100%);"><td><strong>TOTAL GASTOS DEL MES</strong></td><td><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <table class="finance-table" style="margin-top: 30px;">
+  <tbody>
+   <tr style="background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);"><td style="width: 50%;"><strong>AHORRO REAL DEL MES</strong></td><td style="width: 50%;"><div class="writing-space" style="min-height: 40px; margin: 0; background: white;"></div></td></tr>
+  </tbody>
+ </table>
+ <div class="highlight-box" style="margin-top: 40px;">
+  <h3 style="margin-top: 0;">¿Cumplí mi meta del mes?</h3>
+  <div class="writing-space" style="min-height: 80px;"></div>
+ </div>
+ <div class="page-number">09</div>
+</div>
+
+<!-- ANÁLISIS MENSUAL -->
+<div class="page">
+ <h1>Análisis Mensual</h1>
+ <div class="decorative-line"></div>
+ <p class="intro-text">Este es el momento más importante del planner. Aquí aprendes de tu mes, sin juicio, con honestidad y con intención de mejorar.</p>
+ <div class="analysis-grid">
+  <div class="analysis-item"><h4>✅ Qué funcionó</h4><div class="writing-space" style="min-height: 120px;"></div></div>
+  <div class="analysis-item"><h4>❌ Qué no funcionó</h4><div class="writing-space" style="min-height: 120px;"></div></div>
+  <div class="analysis-item"><h4>💡 Qué aprendí</h4><div class="writing-space" style="min-height: 120px;"></div></div>
+  <div class="analysis-item"><h4>❤️ Cómo me sentí</h4><div class="writing-space" style="min-height: 120px;"></div></div>
+ </div>
+ <h2>Ajustes para el próximo mes</h2>
+ <div class="step-container">
+  <div class="step-number">1</div>
+  <div class="step-content"><h3>¿Qué voy a hacer diferente?</h3><div class="writing-space" style="min-height: 100px;"></div></div>
+ </div>
+ <div class="step-container">
+  <div class="step-number">2</div>
+  <div class="step-content"><h3>¿Qué voy a mantener?</h3><div class="writing-space" style="min-height: 100px;"></div></div>
+ </div>
+ <div class="step-container">
+  <div class="step-number">3</div>
+  <div class="step-content"><h3>¿Qué necesito dejar ir?</h3><div class="writing-space" style="min-height: 100px;"></div></div>
+ </div>
+ <div class="page-number">10</div>
+</div>
+
+<!-- DESARROLLO EMOCIONAL -->
+<div class="page">
+ <h1>Desarrollo Emocional con el Dinero</h1>
+ <div class="decorative-line"></div>
+ <p class="intro-text">Tu relación con el dinero está influenciada por creencias, emociones y hábitos. Trabajar en esto es tan importante como organizar tus finanzas.</p>
+ <h2>Creencias que quiero soltar</h2>
+ <p style="color: #8B7089; font-size: 15px; margin-bottom: 16px;">Ejemplo: "Nunca voy a tener suficiente dinero" | "Soy mala para ahorrar" | "El dinero se me va de las manos"</p>
+ <div class="writing-space" style="min-height: 150px;"></div>
+ <h2>Creencias que quiero fortalecer</h2>
+ <p style="color: #8B7089; font-size: 15px; margin-bottom: 16px;">Ejemplo: "Soy capaz de administrar mi dinero" | "Merezco abundancia" | "Cada día mejoro mis finanzas"</p>
+ <div class="writing-space" style="min-height: 150px;"></div>
+ <h2>Hábitos que quiero mejorar</h2>
+ <p style="color: #8B7089; font-size: 15px; margin-bottom: 16px;">Ejemplo: Revisar mis gastos cada semana | Esperar 24 horas antes de comprar | Celebrar mis ahorros</p>
+ <div class="writing-space" style="min-height: 150px;"></div>
+ <div class="highlight-box">
+  <p><strong>💡 Recuerda:</strong> Cambiar tu relación con el dinero es un proceso. Sé paciente y compasivo contigo mismo.</p>
+ </div>
+ <div class="page-number">11</div>
+</div>
+
+<!-- CIERRE TRIMESTRAL -->
+<div class="page">
+ <h1>Cierre Trimestral</h1>
+ <div class="decorative-line"></div>
+ <p class="intro-text">Cada 3 meses, haz una pausa para evaluar tu progreso general. Esto te ayuda a mantener la perspectiva y ajustar tu rumbo.</p>
+ <div class="goal-card">
+  <h3 style="margin-top: 0;">Trimestre: ___________ (Enero-Marzo / Abril-Junio / Julio-Sept / Oct-Dic)</h3>
+ </div>
+ <h2>Evaluación de progreso</h2>
+ <table class="finance-table">
+  <thead><tr><th style="width: 50%;">Meta</th><th style="width: 50%;">Progreso</th></tr></thead>
+  <tbody>
+   <tr><td><strong>Meta financiera principal:</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>¿Qué % de la meta alcancé?</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Ahorro total del trimestre:</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Gastos promedio mensual:</strong></td><td><div class="writing-space" style="min-height: 60px; margin: 0;"></div></td></tr>
+  </tbody>
+ </table>
+ <h2>Ajustes necesarios</h2>
+ <div class="writing-space" style="min-height: 150px;"></div>
+ <h2>Logros para celebrar</h2>
+ <p style="color: #8B7089; font-size: 15px; margin-bottom: 16px;">No importa qué tan pequeños sean, celebra cada logro. Esto refuerza tu compromiso.</p>
+ <div class="writing-space" style="min-height: 150px;"></div>
+ <div class="affirmation">"Cada trimestre es una nueva oportunidad para crecer"</div>
+ <div class="page-number">12</div>
+</div>
+
+<!-- CIERRE ANUAL -->
+<div class="page">
+ <h1>Cierre Anual</h1>
+ <div class="decorative-line"></div>
+ <p class="intro-text">¡Llegaste al final del año! Este es un momento de reflexión profunda, celebración y preparación para el próximo ciclo.</p>
+ <h2>Resultado financiero del año</h2>
+ <table class="finance-table">
+  <tbody>
+   <tr><td style="width: 60%;"><strong>Meta financiera que me propuse:</strong></td><td style="width: 40%;"><div class="writing-space" style="min-height: 50px; margin: 0;"></div></td></tr>
+   <tr><td><strong>¿La cumplí?</strong></td><td><div class="writing-space" style="min-height: 50px; margin: 0;"></div></td></tr>
+   <tr style="background: linear-gradient(135deg, #D4F4DD 0%, #B5EAC3 100%);"><td><strong>Total ahorrado en el año:</strong></td><td><div class="writing-space" style="min-height: 50px; margin: 0; background: white;"></div></td></tr>
+   <tr><td><strong>Gastos totales del año:</strong></td><td><div class="writing-space" style="min-height: 50px; margin: 0;"></div></td></tr>
+   <tr><td><strong>Ingresos totales del año:</strong></td><td><div class="writing-space" style="min-height: 50px; margin: 0;"></div></td></tr>
+  </tbody>
+ </table>
+ <h2>Resultado emocional del año</h2>
+ <div class="writing-space" style="min-height: 150px;"></div>
+ <h2>Aprendizajes más importantes</h2>
+ <div class="writing-space" style="min-height: 150px;"></div>
+ <h2>Reflexión personal</h2>
+ <p style="color: #8B7089; font-size: 15px; margin-bottom: 16px;">¿Cómo cambió mi relación con el dinero este año?</p>
+ <div class="writing-space" style="min-height: 150px;"></div>
+ <div class="affirmation">"Celebro cada paso que di este año hacia mis metas"</div>
+ <div class="page-number">13</div>
+</div>
+
+<!-- PÁGINA DE VENTA -->
+<div class="page">
+ <h1>Finanzas con Lisett García</h1>
+ <div class="decorative-line"></div>
+ <div class="cover-badge" style="margin: 30px 0; background: linear-gradient(135deg, #7A1F3D 0%, #A13A5C 100%); border: none; color: white;">Planner Financiero Completo</div>
+ <h2>¿Qué incluye este planner?</h2>
+ <ul style="font-size: 17px; line-height: 2;">
+  <li><strong>Visión anual completa</strong> — Define tus metas financieras y emocionales del año</li>
+  <li><strong>12 proyectos mensuales</strong> — Divide tu meta anual en pasos alcanzables</li>
+  <li><strong>Planner mensual semanal</strong> — Organiza ingresos y gastos cada semana</li>
+  <li><strong>Análisis mensual profundo</strong> — Aprende de cada mes sin juicio</li>
+  <li><strong>Desarrollo emocional</strong> — Trabaja creencias y hábitos con el dinero</li>
+  <li><strong>Cierres trimestrales</strong> — Evalúa y ajusta cada 3 meses</li>
+  <li><strong>Cierre anual completo</strong> — Celebra y reflexiona sobre tu año</li>
+  <li><strong>100% editable y personalizable</strong> — Adapta a tu realidad financiera</li>
+ </ul>
+ <h2>¿Para quién es este planner?</h2>
+ <div class="highlight-box">
+  <p>✓ Personas con ingresos fijos o variables que quieren organizarse</p>
+  <p>✓ Quienes sienten que el dinero "se les va de las manos"</p>
+  <p>✓ Personas que quieren ahorrar pero no saben por dónde empezar</p>
+  <p>✓ Quienes buscan claridad y acompañamiento, no perfección</p>
+  <p>✓ Personas cansadas de planners rígidos que no funcionan</p>
+ </div>
+ <h2>Beneficios de usar este planner</h2>
+ <div class="step-container"><div class="step-number">💰</div><div class="step-content"><h3>Claridad financiera</h3><p>Sabrás exactamente cuánto entra, cuánto sale y a dónde va tu dinero cada semana</p></div></div>
+ <div class="step-container"><div class="step-number">🎯</div><div class="step-content"><h3>Metas alcanzables</h3><p>Convierte grandes sueños en proyectos mensuales reales y medibles</p></div></div>
+ <div class="step-container"><div class="step-number">❤️</div><div class="step-content"><h3>Paz emocional</h3><p>Reduce ansiedad y culpa al tener un sistema de acompañamiento, no control</p></div></div>
+ <div class="step-container"><div class="step-number">📈</div><div class="step-content"><h3>Progreso visible</h3><p>Ve tu evolución mes a mes y celebra cada logro, por pequeño que sea</p></div></div>
+ <div class="page-number">14</div>
+</div>
+
+<!-- MOCKUPS Y PRECIO -->
+<div class="page" style="text-align: center;">
+ <h1>Transforma tu relación con el dinero</h1>
+ <div class="decorative-line"></div>
+ <div class="card" style="max-width: 600px; margin: 40px auto;">
+  <div class="card-subtitle">Incluye</div>
+  <div class="card-title" style="font-size: 28px; margin-bottom: 20px;">Planner Digital PDF</div>
+  <p style="font-size: 16px; margin-bottom: 16px;">✓ Más de 14 páginas de contenido estructurado</p>
+  <p style="font-size: 16px; margin-bottom: 16px;">✓ Imprimible o editable digitalmente</p>
+  <p style="font-size: 16px; margin-bottom: 16px;">✓ Compatible con tablet, escritorio y móvil</p>
+  <p style="font-size: 16px; margin-bottom: 16px;">✓ Uso personal ilimitado</p>
+ </div>
+ <div style="margin: 60px 0;">
+  <div style="display: inline-block; padding: 16px 40px; background: linear-gradient(135deg, #F5E6EA 0%, #ECD6DD 100%); border-radius: 16px; border: 3px solid var(--color-accent);">
+   <p style="font-size: 18px; color: #8B7089; margin-bottom: 8px; text-decoration: line-through;">$47 USD</p>
+   <p style="font-size: 56px; font-weight: 700; color: var(--color-accent); margin: 0; line-height: 1;">$17</p>
+   <p style="font-size: 16px; color: #8B7089; margin-top: 8px;">Precio de lanzamiento</p>
+  </div>
+ </div>
+ <div class="highlight-box" style="text-align: left;">
+  <h3 style="margin-top: 0;">¿Por qué invertir en este planner?</h3>
+  <p>Una sola semana de organización puede ahorrarte cientos de dólares al identificar gastos innecesarios.</p>
+  <p>La claridad financiera reduce el estrés y mejora tu calidad de vida.</p>
+  <p>Este planner es una inversión en tu bienestar financiero y emocional.</p>
+ </div>
+ <div style="margin-top: 60px; padding: 40px; background: linear-gradient(135deg, #7A1F3D 0%, #A13A5C 100%); border-radius: 24px; color: white;">
+  <h2 style="color: white; margin-bottom: 20px;">Garantía de satisfacción</h2>
+  <p style="color: white; opacity: 0.95; font-size: 16px;">Si después de usar el planner durante 30 días sientes que no fue útil, te devolvemos el 100% de tu inversión. Sin preguntas.</p>
+ </div>
+ <div class="page-number">15</div>
+</div>
+
+<!-- AVISO LEGAL -->
+<div class="page">
+ <h1>Términos de Uso</h1>
+ <div class="decorative-line"></div>
+ <div class="highlight-box">
+  <h3 style="margin-top: 0;">Derechos de uso personal</h3>
+  <p><strong>✓ SÍ puedes:</strong></p>
+  <ul>
+   <li>Usar este planner para tu organización financiera personal</li>
+   <li>Imprimirlo cuantas veces necesites para uso personal</li>
+   <li>Editarlo digitalmente para adaptarlo a tu situación</li>
+   <li>Guardarlo en tus dispositivos (tablet, computadora, celular)</li>
+  </ul>
+ </div>
+ <div class="highlight-box">
+  <h3 style="margin-top: 0;">Restricciones de uso</h3>
+  <p><strong>✗ NO puedes:</strong></p>
+  <ul>
+   <li>Revender o redistribuir este planner</li>
+   <li>Compartirlo en grupos, redes sociales o plataformas públicas</li>
+   <li>Modificarlo y venderlo como tu propio producto</li>
+   <li>Incluirlo en paquetes de productos digitales para venta</li>
+   <li>Usarlo con fines comerciales sin autorización</li>
+  </ul>
+ </div>
+ <h2>Descargo de responsabilidad</h2>
+ <p class="intro-text">Este planner es una herramienta de organización y acompañamiento financiero personal. No constituye asesoría financiera profesional. Las decisiones financieras son responsabilidad exclusiva del usuario.</p>
+ <p class="intro-text">Para asesoría financiera personalizada, consulta con un profesional certificado en tu país.</p>
+ <h2>Contacto y soporte</h2>
+ <p class="intro-text">Si tienes preguntas sobre cómo usar el planner o necesitas ayuda, contáctanos a: [tu email de contacto]</p>
+ <div class="affirmation">"Este planner es tu compañero en el camino hacia la libertad financiera"</div>
+ <div class="page-number">16</div>
+</div>
+
+<!-- PÁGINA FINAL -->
+<div class="page cover-page">
+ <div class="cover-content">
+  <div class="affirmation" style="font-size: 36px; color: white;">"Cuando tu dinero tiene intención,<br>tus decisiones se alinean"</div>
+  <div class="decorative-line" style="background: linear-gradient(90deg, transparent, white, transparent); margin: 50px auto;"></div>
+  <p style="font-size: 20px; opacity: 0.9;">Finanzas con Lisett García</p>
+  <p style="font-size: 16px; opacity: 0.8; margin-top: 12px;">© 2026 - Todos los derechos reservados</p>
+ </div>
+</div>
+
+</div>
+</body>
+</html>
