@@ -271,9 +271,11 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.inline-form button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(122, 31, 61, 0.32);
+@media (hover: hover) and (pointer: fine) {
+  .inline-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(122, 31, 61, 0.32);
+  }
 }
 
 .item-list {
@@ -349,9 +351,11 @@ body {
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.btn-secondary:hover {
-  background: var(--silver-dark);
-  color: white;
+@media (hover: hover) and (pointer: fine) {
+  .btn-secondary:hover {
+    background: var(--silver-dark);
+    color: white;
+  }
 }
 
 .app-footer {
